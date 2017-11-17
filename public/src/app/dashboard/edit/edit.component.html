@@ -1,0 +1,23 @@
+<h1>{{recipe?.name}}</h1>
+<form (submit)="onSubmit()" #formData="ngForm">
+  <label for="ingredient">Ingredients:</label>
+  <input type="text" name="ingredient" required minlength="3" [(ngModel)]="ingredient.name" #name="ngModel"><br><br>
+  <label for="amount">Amount:</label>
+  <input type="text" name="amount" required minlength="1" [(ngModel)]="ingredient.amount" #amount="ngModel">
+  <input type="submit" [disabled]="formData.invalid">
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ingredients</th>
+      <th>Amount</th>
+    </tr>
+    <tr *ngFor="let ingredient of recipe?.ingredients">
+      <td>{{ingredient.name}}</td>
+      <td>{{ingredient.amount}}</td>
+    </tr>
+  </thead>
+</table>
+
+<a [routerLink]="['/recipes', recipeId]"><button>View Recipe</button></a>

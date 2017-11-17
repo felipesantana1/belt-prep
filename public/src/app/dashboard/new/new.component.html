@@ -1,0 +1,5 @@
+<form (submit)="onSubmit()" #formData="ngForm">
+  <label for="name">Recipe Name:</label>
+  <input type="text" name="name" required [(ngModel)]="recipe.name" minlength="3" #name="ngModel">
+  <input type="submit" [disabled]="formData.invalid">
+</form>
